@@ -17,7 +17,8 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://mern-task-app-3h2x.onrender.com"
-    ]
+    ],
+    credentials: true,
   })
 );
 
