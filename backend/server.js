@@ -15,8 +15,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:3000/",
-      "https://mern-task-app-3h2x.onrender.com/"
+      "http://localhost:3000",
+      "https://mern-task-app-3h2x.onrender.com"
     ]
   })
 );
@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cors());
 app.use("/api/tasks", taskRoutes);
 
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -33,7 +34,25 @@ mongoose
       console.log(`Server is running on port ${PORT}.`);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+    process.exit(1); // Exit the process if unable to connect
+  });
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
+
+
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => {
+//     app.listen(PORT, () => {
+//       console.log(`Server is running on port ${PORT}.`);
+//     });
+//   })
+//   .catch((err) => console.log(err));
 
 // To connect to mongoDB
 connectDB();
