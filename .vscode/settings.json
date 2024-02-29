@@ -1,0 +1,14 @@
+{
+  "javascript.validate.enable": false, // Disable built-in JavaScript validation (if using ESLint)
+  "editor.formatOnSave": true, // Enable auto-formatting on save
+  "eslint.enable": true, // Enable ESLint integration
+  "editor.codeActionsOnSave": {
+    
+  },
+  "cSpell.words": [
+    "toastify"
+  ] // Auto-fix ESLint issues on save
+}
+
+
+
