@@ -13,7 +13,12 @@ const app = express();
 // Middleware
 // Enable CORS for a specific origin
 app.use(
-  cors()
+  cors(
+    origin: [
+      "http://localhost:3000",
+      "https://mern-task-app-3h2x.onrender.com"
+    ]
+  )
 );
 
 app.use(express.json());
