@@ -11,9 +11,17 @@ const path = require("path");
 const app = express();
 
 // Middleware
+// Enable CORS for a specific origin
+const corsOptions = {
+  origin: 'https://mern-task-app-3h2x.onrender.com',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
 app.use("/api/tasks", taskRoutes);
 
 mongoose
